@@ -1,0 +1,371 @@
+%% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
+%% ---------------------------------
+%% This template should be used for copernicus.cls
+%% The class file and some style files are bundled in the Copernicus Latex Package which can be downloaded from the different journal webpages.
+%% For further assistance please contact the Copernicus Publications at: publications@copernicus.org
+%% http://publications.copernicus.org
+
+
+%% Please use the following documentclass and Journal Abbreviations for Discussion Papers and Final Revised Papers.
+
+
+%% 2-Column Papers and Discussion Papers
+\documentclass[journal abbreviation, manuscript]{copernicus}
+
+
+
+%% Journal Abbreviations (Please use the same for Discussion Papers and Final Revised Papers)
+
+% Archives Animal Breeding (aab)
+% Atmospheric Chemistry and Physics (acp)
+% Advances in Geosciences (adgeo)
+% Advances in Statistical Climatology, Meteorology and Oceanography (ascmo)
+% Annales Geophysicae (angeo)
+% ASTRA Proceedings (ap)
+% Atmospheric Measurement Techniques (amt)
+% Advances in Radio Science (ars)
+% Advances in Science and Research (asr)
+% Biogeosciences (bg)
+% Climate of the Past (cp)
+% Drinking Water Engineering and Science (dwes)
+% Earth System Dynamics (esd)
+% Earth Surface Dynamics (esurf)
+% Earth System Science Data (essd)
+% Fossil Record (fr)
+% Geographica Helvetica (gh)
+% Geoscientific Instrumentation, Methods and Data Systems (gi)
+% Geoscientific Model Development (gmd)
+% Geothermal Energy Science (gtes)
+% Hydrology and Earth System Sciences (hess)
+% History of Geo- and Space Sciences (hgss)
+% Journal of Sensors and Sensor Systems (jsss)
+% Mechanical Sciences (ms)
+% Natural Hazards and Earth System Sciences (nhess)
+% Nonlinear Processes in Geophysics (npg)
+% Ocean Science (os)
+% Proceedings of the International Association of Hydrological Sciences (piahs)
+% Primate Biology (pb)
+% Scientific Drilling (sd)
+% SOIL (soil)
+% Solid Earth (se)
+% The Cryosphere (tc)
+% Web Ecology (we)
+% Wind Energy Science (wes)
+
+
+%% \usepackage commands included in the copernicus.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+\usepackage{graphics}
+
+\begin{document}
+
+\title{Chebyshev filter}
+
+
+% \Author[affil]{given_name}{surname}
+
+\Author[]{}{}
+\Author[]{}{}
+\Author[]{}{}
+
+\affil[]{ADDRESS}
+\affil[]{ADDRESS}
+
+%% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
+
+
+
+\runningtitle{TEXT}
+
+\runningauthor{TEXT}
+
+\correspondence{NAME (EMAIL)}
+
+
+
+\received{}
+\pubdiscuss{} %% only important for two-stage journals
+\revised{}
+\accepted{}
+\published{}
+
+%% These dates will be inserted by Copernicus Publications during the typesetting process.
+
+
+\firstpage{1}
+
+\maketitle
+
+
+
+\begin{abstract}
+TEXT
+\end{abstract}
+
+
+
+\introduction  %% \introduction[modified heading if necessary]
+Chebyshev filters are analog or digital filters having a steeper roll-off and more passband ripple (type I) or stopband ripple (type II) than Butterworth filters. Chebyshev filters have the property that they minimize the error between the idealized and the actual filter characteristic over the range of the filter,[citation needed] but with ripples in the passband. This type of filter is named after Pafnuty Chebyshev because its mathematical characteristics are derived from Chebyshev polynomials.
+
+Because of the passband ripple inherent in Chebyshev filters, the ones that have a smoother response in the passband but a more irregular response in the stopband are preferred for some applications.
+
+
+
+\section{Type I Chebyshev filters}
+Type I Chebyshev filters are the most common types of Chebyshev filters. The gain (or amplitude) response as a function of angular frequency $\omega$ of the nth-order low-pass filter is equal to the absolute value of the transfer function $H_n(j\omega)$:
+$G_n(\omega)=\left | H_n(j \omega) \right | = \frac{1}{\sqrt{1+\varepsilon^2 T_n^2\left(\frac{\omega}{\omega_0}\right)}}$
+
+where $\varepsilon$ is the ripple factor, $\omega_0$ is the cutoff frequency and $T_n$ is a Chebyshev polynomial of the $n$th order.
+
+The passband exhibits equiripple behavior, with the ripple determined by the ripple factor $\varepsilon$. In the passband, the Chebyshev polynomial alternates between $ -1 $ and $ 1 $ so the filter gain alternate between maxima at $G = 1$ and minima at $G=1/\sqrt{1+\varepsilon^2}$. At the cutoff frequency $\omega_0$ the gain again has the value $1/\sqrt{1+\varepsilon^2}$ but continues to drop into the stop band as the frequency increases. This behavior is shown in the diagram on the right. The common practice of defining the cutoff frequency at $ -3 $ $dB$ is usually not applied to Chebyshev filters; instead the cutoff is taken as the point at which the gain falls to the value of the ripple for the final time.
+
+The order of a Chebyshev filter is equal to the number of reactive components (for example, inductors) needed to realize the filter using analog electronics.
+
+The ripple is often given in $dB$:
+
+Ripple in $dB = 10 \log_{10}(1+\varepsilon^2)$
+so that a ripple amplitude of 3 $dB$ results from $\varepsilon = 1$.
+
+An even steeper roll-off can be obtained if ripple is allowed in the stop band, by allowing zeroes on the $j\omega$-axis in the complex plane. However, this results in less suppression in the stop band. The result is called an elliptic filter, also known as Cauer filter. 
+
+\includegraphics{grafik}
+
+\subsection{Poles and zeroes}
+For simplicity, it is assumed that the cutoff frequency is equal to unity. The poles ($\omega_{pm}$) of the gain function of the Chebyshev filter are the zeroes of the denominator of the gain function. Using the complex frequency s, these occur when:
+$1+\varepsilon^2T_n^2(-js)=0.$
+Defining $-js=\cos(\theta)$ and using the trigonometric definition of the Chebyshev polynomials yields:
+
+$1+\varepsilon^2T_n^2(\cos(\theta))=1+\varepsilon^2\cos^2(n\theta)=0.$\,
+Solving for $\theta$
+
+$\theta=\frac{1}{n}\arccos\left(\frac{\pm j}{\varepsilon}\right)+\frac{m\pi}{n}$
+where the multiple values of the arc cosine function are made explicit using the integer index $m$. The poles of the Chebyshev gain function are then:
+
+$s_{pm}=j\cos(\theta)=j\cos\left(\frac{1}{n}\arccos\left(\frac{\pm j}{\varepsilon}\right)+\frac{m\pi}{n}\right).$
+Using the properties of the trigonometric and hyperbolic functions, this may be written in explicitly complex form:
+
+$s_{pm}^\pm=\pm \sinh\left(\frac{1}{n}\mathrm{arsinh}\left(\frac{1}{\varepsilon}\right)\right)\sin(\theta_m)+j  \cosh\left(\frac{1}{n}\mathrm{arsinh}\left(\frac{1}{\varepsilon}\right)\right)\cos(\theta_m)$
+where $m = 1, 2,..., n$  and
+
+$\theta_m=\frac{\pi}{2}\,\frac{2m-1}{n}$.
+This may be viewed as an equation parametric in $\theta_n$ and it demonstrates that the poles lie on an ellipse in s-space centered at $s = 0$ with a real semi-axis of length $\sinh(\mathrm{arsinh}(1/\varepsilon)/n$) and an imaginary semi-axis of length of $\cosh(\mathrm{arsinh}(1/\varepsilon)/n)$
+\subsection{The transfer function.}
+The above expression yields the poles of the gain $G$. For each complex pole, there is another which is the complex conjugate, and for each conjugate pair there are two more that are the negatives of the pair. The transfer function must be stable, so that its poles are those of the gain that have negative real parts and therefore lie in the left half plane of complex frequency space. The transfer function is then given by
+
+$H(s)= \frac{1}{2^{n-1}\varepsilon}\ \prod_{m=1}^{n} \frac{1}{(s-s_{pm}^-)}$
+where $s_{pm}^-$ are only those poles with a negative sign in front of the real term in the above equation for the poles.
+
+\subsubsection{HEADING}
+TEXT
+
+
+
+
+\conclusions  %% \conclusions[modified heading if necessary]
+TEXT
+
+
+
+
+\appendix
+\section{}    %% Appendix A
+
+\subsection{}                               %% Appendix A1, A2, etc.
+
+
+\authorcontribution{TEXT}
+
+\begin{acknowledgements}
+TEXT
+\end{acknowledgements}
+
+
+%% REFERENCES
+
+%% The reference list is compiled as follows:
+
+\begin{thebibliography}{}
+
+\bibitem{Daniels}
+Daniels, Richard W. (1974). Approximation Methods for Electronic Filter Design. New York: McGraw-Hill. ISBN 0-07-015308-6.
+
+\bibitem{Williams}
+Williams, Arthur B.; Taylors, Fred J. (1988). Electronic Filter Design Handbook. New York: McGraw-Hill. ISBN 0-07-070434-1.
+
+\bibitem{Matthaei}
+Matthaei, George L.; Young, Leo; Jones, E. M. T. (1980). Microwave Filters, Impedance-Matching Networks, and Coupling Structures. Norwood, MA: Artech House. ISBN 0-89-006099-1.
+
+\end{thebibliography}
+
+%% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
+%% authors experienced with BibTeX only have to include the following two lines:
+%%
+%% \bibliographystyle{copernicus}
+%% \bibliography{example.bib}
+%%
+%% URLs and DOIs can be entered in your BibTeX file as:
+%%
+%% URL = {http://www.xyz.org/~jones/idx_g.htm}
+%% DOI = {10.5194/xyz}
+
+
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+
+
+%% FIGURES
+
+%% ONE-COLUMN FIGURES
+
+%%f
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure}
+%
+%%% TWO-COLUMN FIGURES
+%
+%%f
+%\begin{figure*}[t]
+%\includegraphics[width=12cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure*}
+%
+%
+%%% TABLES
+%%%
+%%% The different columns must be seperated with a & command and should
+%%% end with \\ to identify the column brake.
+%
+%%% ONE-COLUMN TABLE
+%
+%%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table}
+%
+%%% TWO-COLUMN TABLE
+%
+%%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table*}
+%
+%
+%%% NUMBERING OF FIGURES AND TABLES
+%%%
+%%% If figures and tables must be numbered 1a, 1b, etc. the following command
+%%% should be inserted before the begin{} command.
+%
+%\addtocounter{figure}{-1}\renewcommand{\thefigure}{\arabic{figure}a}
+%
+%
+%%% MATHEMATICAL EXPRESSIONS
+%
+%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
+%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
+%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+%%%
+%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
+%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+%%% Vectors are identified in bold italic font using \vec{x}
+%%% Matrices are identified in bold roman font
+%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
+%%% The character * should not be applied as mutliplication sign
+%
+%
+%%% EQUATIONS
+%
+%%% Single-row equation
+%
+%\begin{equation}
+%
+%\end{equation}
+%
+%%% Multiline equation
+%
+%\begin{align}
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8
+%\end{align}
+%
+%
+%%% MATRICES
+%
+%\begin{matrix}
+%x & y & z\\
+%x & y & z\\
+%x & y & z\\
+%\end{matrix}
+%
+%
+%%% ALGORITHM
+%
+%\begin{algorithm}
+%\caption{�}
+%\label{a1}
+%\begin{algorithmic}
+%�
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%%% CHEMICAL FORMULAS AND REACTIONS
+%
+%%% For formulas embedded in the text, please use \chem{}
+%
+%%% The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
+%
+%\begin{reaction}
+%%% \rightarrow should be used for normal (one-way) chemical reactions
+%%% \rightleftharpoons should be used for equilibria
+%%% \leftrightarrow should be used for resonance structures
+%\end{reaction}
+%
+%
+%%% PHYSICAL UNITS
+%%%
+%%% Please use \unit{} and apply the exponential notation
+
+
+\end{document}
